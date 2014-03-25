@@ -3,8 +3,47 @@
 <head>
   <meta charset="utf-8">
   <title>concord</title>
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="dist/concord.js" type="text/javascript" charset="utf-8"></script>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" type="text/css">
+  <link rel="stylesheet" href="concord.css" type="text/css">
+  <style type="text/css" media="all">
+    body { background-color: whitesmoke; }
+
+    .container {
+      width: 50%;
+      margin: 75px auto 0 auto;
+      border: 1px solid gainsboro;
+      min-height: 300px;
+      max-height: 500px;
+      overflow: auto;
+      padding: 6px;
+      background-color: white;
+    }
+  </style>
 </head>
 <body>
-  <script src="dist/concord.js" type="text/javascript" charset="utf-8"></script>
+<div class="container">
+  <div id="outliner"></div>
+</div>
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function () {
+      var otl = $("#outliner").concord({
+        prefs: {
+          outlineFont: "Georgia",
+          ontlineFontSize: 18,
+          ontlineLineHeight: 24,
+          renderMode: false,
+          readOnly: false
+        }
+      });
+
+      var blankOpml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
+        "<opml version=\"2.0\"><head><title>Untitled</title></head>" +
+        "<body><outline text=\"\"/></body></opml>";
+
+      otl.op.xmlToOutline(blankOpml);
+  });
+</script>
 </body>
 </html>
