@@ -20,7 +20,7 @@ if (!Array.prototype.indexOf) {
 		}
 	}
 var concord = {
-	version: "2.49",
+	version: "3.0.0",
 	mobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent),
 	ready: false,
 	handleEvents: true,
