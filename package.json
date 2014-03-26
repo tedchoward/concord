@@ -1,0 +1,28 @@
+{
+  "name": "concord",
+  "version": "3.0.0",
+  "description": "core-outliner",
+  "main": "concord.js",
+  "scripts": {
+    "build-debug": "browserify concord.js -d > dist/concord.js",
+    "build-min": "browserify concord.js | uglifyjs -c > dist/concord.min.js",
+    "build": "npm run build-debug && npm run build-min",
+    "watch": "watchify concord.js -d -o dist/concord.js -v",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tedchoward/concord.git"
+  },
+  "author": "Ted C. Howard",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/tedchoward/concord/issues"
+  },
+  "homepage": "https://github.com/tedchoward/concord",
+  "devDependencies": {
+    "watchify": "^0.6.3",
+    "uglify-js": "^2.4.13",
+    "browserify": "^3.33.0"
+  }
+}
