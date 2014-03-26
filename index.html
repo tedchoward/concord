@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>concord</title>
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+  <!--<script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>-->
   <script src="dist/concord.js" type="text/javascript" charset="utf-8"></script>
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" type="text/css">
   <link rel="stylesheet" href="concord.css" type="text/css">
@@ -27,22 +27,31 @@
   <div id="outliner"></div>
 </div>
 <script type="text/javascript" charset="utf-8">
-  $(document).ready(function () {
-      var otl = $("#outliner").concord({
-        prefs: {
-          outlineFont: "Georgia",
-          ontlineFontSize: 18,
-          ontlineLineHeight: 24,
-          renderMode: false,
-          readOnly: false
-        }
-      });
 
-      var blankOpml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
-        "<opml version=\"2.0\"><head><title>Untitled</title></head>" +
-        "<body><outline text=\"\"/></body></opml>";
+  document.addEventListener("DOMContentLoaded", function () {
 
-      otl.op.xmlToOutline(blankOpml);
+    var ConcordOutline = require("./lib/concord-outline");
+    var concord = require("./lib/concord");
+
+    var el = document.getElementById("outliner");
+
+    var options = {
+      prefs: {
+        outlineFont: "Georgia",
+        ontlineFontSize: 18,
+        ontlineLineHeight: 24,
+        renderMode: false,
+        readOnly: false
+      }
+    };
+
+    var otl = new ConcordOutline(el, options, concord);
+
+    var blankOpml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
+      "<opml version=\"2.0\"><head><title>Untitled</title></head>" +
+      "<body><outline text=\"\"/></body></opml>";
+
+    otl.op.xmlToOutline(blankOpml);
   });
 </script>
 </body>
