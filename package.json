@@ -4,10 +4,10 @@
   "description": "core-outliner",
   "main": "concord.js",
   "scripts": {
-    "build-debug": "browserify -r \"./lib/concord-outline\" -r \"./lib/concord\" concord.js -d > dist/concord.js",
-    "build-min": "browserify -r \"./lib/concord-outline\" -r \"./lib/concord\" concord.js | uglifyjs -c > dist/concord.min.js",
+    "build-debug": "browserify -t coffeeify -r \"./lib/concord-outline\" -r \"./lib/concord\" concord.js -d > dist/concord.js",
+    "build-min": "browserify -t coffeeify -r \"./lib/concord-outline\" -r \"./lib/concord\" concord.js | uglifyjs -c > dist/concord.min.js",
     "build": "npm run build-debug && npm run build-min",
-    "watch": "watchify -r \"./lib/concord-outline\" -r \"./lib/concord\" concord.js -d -o dist/concord.js -v",
+    "watch": "watchify -t coffeeify -r \"./lib/concord-outline\" -r \"./lib/concord\" concord.js -d -o dist/concord.js -v",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,7 +23,9 @@
   "devDependencies": {
     "watchify": "^0.6.3",
     "uglify-js": "^2.4.13",
-    "browserify": "^3.33.0"
+    "browserify": "^3.33.0",
+    "coffeeify": "^0.6.0",
+    "coffee-script": "^1.7.1"
   },
   "dependencies": {
     "jquery": "^1.9.1"
